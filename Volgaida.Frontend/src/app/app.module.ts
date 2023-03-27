@@ -8,12 +8,14 @@ import { StoreModule } from '@ngrx/store';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HomePageComponent } from './pages/home-page/home-page/home-page.component';
 import { ContactPageComponent } from './pages/contact-page/contact-page/contact-page.component';
+import { MenuPageComponent } from './pages/menu-page/menu-page/menu-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomePageComponent,
-    ContactPageComponent
+    ContactPageComponent,
+    MenuPageComponent
   ],
   imports: [
     BrowserModule,
