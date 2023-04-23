@@ -10,6 +10,7 @@ import { HomePageComponent } from './pages/home-page/home-page/home-page.compone
 import { ContactPageComponent } from './pages/contact-page/contact-page/contact-page.component';
 import { MenuPageComponent } from './pages/menu-page/menu-page/menu-page.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
+import {NgOptimizedImage} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -19,13 +20,14 @@ import { NavigationComponent } from './components/navigation/navigation.componen
     MenuPageComponent,
     NavigationComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    StoreModule.forRoot({}, {}),
-    NgbModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        StoreModule.forRoot({}, {}),
+        NgbModule,
+        NgOptimizedImage
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

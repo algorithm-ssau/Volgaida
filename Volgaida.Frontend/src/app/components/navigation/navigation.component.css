@@ -1,3 +1,38 @@
-@import "~bootstrap-icons/font/bootstrap-icons.css";
+.nav {
+  border-bottom: gray 0.1rem solid;
+}
+
+.nav-logo {
+  height: 7rem;
+  width: 14rem;
+}
+
+.nav-link {
+  color: black;
+}
+
+.nav-link:hover {
+  color: black;
+  cursor: pointer;
+  text-decoration: underline black;
+}
 
 
+.active-link,
+.active-link:hover {
+  color: gray;
+  text-decoration: none;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.nav-social {
+  height: 3.5rem;
+  width: 3.5rem;
+
+  transition: transform 0.2s linear;
+}
+
+.nav-social:hover {
+  transform: scale(1.2);
+}

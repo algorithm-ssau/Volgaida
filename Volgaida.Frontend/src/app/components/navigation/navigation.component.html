@@ -1,28 +1,38 @@
-<nav class="navbar navbar-dark bg-dark fixed-top navbar-expand">
-  <div class="container-fluid justify-content-around">
-    <a class="navbar-brand fs-1" routerLinkActive="active" routerLink="/home">Volgaida</a>
+<ul class="nav app-bg-primary fixed-top justify-content-center align-items-center fs-2 text-uppercase">
+  <div class="container row justify-content-between align-items-center">
 
-    <ul class="navbar-nav fs-3">
-      <li class="nav-item">
-        <a class="nav-link" routerLinkActive="active" routerLink="/menu">Меню</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLinkActive="active" routerLink="/contact">Контакты</a>
-      </li>
-    </ul>
+    <li class="nav-item col-3">
+      <a class="nav-link nav-logo" routerLinkActive="active" routerLink="/home">
+        <img ngSrc="assets/images/navigation/logo.png" class="img-fluid" alt="Logo" height="136" width="266">
+      </a>
+    </li>
 
-    <ul class="navbar-nav fs-2">
-      <li class="nav-item">
-        <a class="nav-link btn">
-          <i class="bi bi-telegram"></i>
+    <li class="nav-item col-3">
+      <a class="nav-link" routerLinkActive="active-link" routerLink="/menu">Меню</a>
+    </li>
+    <li class="nav-item col-3">
+      <a class="nav-link" routerLinkActive="active-link" routerLink="/contact">Контакты</a>
+    </li>
+
+    <div class="col-3 row fs-1">
+      <li class="col-4">
+        <a class="nav-link" href="#">
+          <img ngSrc="assets/images/navigation/vk.svg" class="nav-social" alt="Logo" height="40" width="40">
         </a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link btn">
-          <i class="bi bi-github"></i>
+
+      <li class="nav-item col-4">
+        <a class="nav-link" href="#">
+          <img ngSrc="assets/images/navigation/telegram.svg" class="nav-social" alt="Logo" height="40" width="40">
         </a>
       </li>
-    </ul>
+
+      <li class="nav-item col-4">
+        <a class="nav-link" href="#">
+          <img ngSrc="assets/images/navigation/instagram.svg" class="nav-social" alt="Logo" height="40" width="40">
+        </a>
+      </li>
+    </div>
 
   </div>
-</nav>
+</ul>
