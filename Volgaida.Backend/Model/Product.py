@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 
-from Model.ProductTag import ProductTag
+from ProductTag import ProductTag
 
 
 class Product(BaseModel):
@@ -9,4 +9,4 @@ class Product(BaseModel):
     price: float
     description: str
     image_base64: str
-    tagList: ProductTag
+    tag: ProductTag
