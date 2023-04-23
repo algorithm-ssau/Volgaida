@@ -1,20 +1,12 @@
-from enum import Enum
-from typing import List
-
 from pydantic import BaseModel
 
-
-class ProductTag(Enum):
-    alcohol = "alcohol"
-    soup = "soup"
-    pizza = "pizza"
-    pasta = "pasta"
-    garnish = "garnish"
-    meat = "meat"
+from Model.ProductTag import ProductTag
 
 
 class Product(BaseModel):
     id: int
     name: str
     price: float
-    tagList: List[ProductTag]
+    description: str
+    image_base64: str
+    tagList: ProductTag
