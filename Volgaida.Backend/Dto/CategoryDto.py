@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 
 
-class Category(BaseModel):
+class CategoryDto(BaseModel):
     id: int
     name: str
     image: str
