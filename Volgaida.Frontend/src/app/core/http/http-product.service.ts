@@ -31,7 +31,7 @@ export class HttpProductService {
   }
 
   getByCategories(categoryId: number): Observable<ProductShortDto[]> {
-    return this.http.get<ProductShortDto[]>(this.url + 'catigory/' + categoryId)
+    return this.http.get<ProductShortDto[]>(this.url + 'category/' + categoryId)
       .pipe(
         catchError(this.errorHandler.bind(this))
       )
