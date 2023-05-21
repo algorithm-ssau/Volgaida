@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ImageSize} from "../../../core/ImageSize";
+import {ImageSize} from "../../core/ImageSize";
 
 @Component({
   selector: 'app-home-page',
