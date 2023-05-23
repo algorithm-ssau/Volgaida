@@ -14,7 +14,8 @@ import { MenuPageComponent } from './pages/menu-page/menu-page.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import {NgOptimizedImage} from "@angular/common";
 import { FooterComponent } from './components/footer/footer.component';
-import { ProductPageComponent } from './pages/product-page/product-page.component';
+import { CategoryPageComponent } from './pages/category-page/category-page.component';
+import {MatCardModule} from "@angular/material/card";
 
 @NgModule({
   declarations: [
@@ -24,19 +25,20 @@ import { ProductPageComponent } from './pages/product-page/product-page.componen
     MenuPageComponent,
     NavigationComponent,
     FooterComponent,
-    ProductPageComponent
+    CategoryPageComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        StoreModule.forRoot({}, {}),
-        NgbModule,
-        NgOptimizedImage,
-        TuiRootModule,
-        TuiDialogModule,
-        TuiAlertModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    StoreModule.forRoot({}, {}),
+    NgbModule,
+    NgOptimizedImage,
+    TuiRootModule,
+    TuiDialogModule,
+    TuiAlertModule,
+    MatCardModule
+  ],
   providers: [{provide: TUI_SANITIZER, useClass: NgDompurifySanitizer}],
   bootstrap: [AppComponent]
 })
