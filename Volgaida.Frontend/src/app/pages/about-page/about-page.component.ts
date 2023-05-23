@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+
+import {ImageSize} from "../../core/ImageSize";
+import {HttpCategoryMockService} from "../../core/mocks/http-category-mock.service";
 
 @Component({
   selector: 'app-about-page',
@@ -6,10 +9,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./about-page.component.css']
 })
 export class AboutPageComponent implements OnInit {
+  protected readonly ImageSize = ImageSize;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
-
 }
