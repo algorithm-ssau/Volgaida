@@ -1,0 +1,41 @@
+.nav {
+  border-bottom: gray 0.1rem solid;
+}
+
+.nav-logo {
+  height: 7rem;
+  width: 14rem;
+}
+
+.nav-link-text {
+  color: black;
+}
+
+.nav-link-text:hover {
+  cursor: pointer;
+}
+
+.nav-link-text::after {
+  text-align: center;
+  content: '';
+  width: 0;
+  height: 1px;
+  display: block;
+  background: black;
+  transition: 300ms;
+}
+
+.nav-link-text:hover::after {
+  width: 100%;
+}
+
+.nav-social {
+  height: 3.5rem;
+  width: 3.5rem;
+
+  transition: transform 0.2s linear;
+}
+
+.nav-social:hover {
+  transform: scale(1.2);
+}
