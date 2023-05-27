@@ -3,9 +3,9 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
 
-engine = create_engine("postgresql://postgres:SuperSecretPassword@localhost/volgaida",
-                       echo=True)
+DB_URL = "mysql://root:SuperSecretPassword@127.0.0.1:3306/volgaida"
+engine = create_engine(DB_URL, echo=True)
 
 Base = declarative_base()
 
-SessionLocal = sessionmaker(bind=engine)
+SessionLocal = sessionmaker(autocommit=False, bind=engine)
