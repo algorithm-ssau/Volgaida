@@ -8,35 +8,37 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StoreModule } from '@ngrx/store';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { HomePageComponent } from './pages/home-page/home-page/home-page.component';
-import { ContactPageComponent } from './pages/contact-page/contact-page/contact-page.component';
-import { MenuPageComponent } from './pages/menu-page/menu-page/menu-page.component';
+import { HomePageComponent } from './pages/home-page/home-page.component';
+import { AboutPageComponent } from './pages/about-page/about-page.component';
+import { MenuPageComponent } from './pages/menu-page/menu-page.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import {NgOptimizedImage} from "@angular/common";
 import { FooterComponent } from './components/footer/footer.component';
-import { ProductPageComponent } from './pages/product-page/product-page.component';
+import { CategoryPageComponent } from './pages/category-page/category-page.component';
+import {MatCardModule} from "@angular/material/card";
 
 @NgModule({
   declarations: [
     AppComponent,
     HomePageComponent,
-    ContactPageComponent,
+    AboutPageComponent,
     MenuPageComponent,
     NavigationComponent,
     FooterComponent,
-    ProductPageComponent
+    CategoryPageComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        StoreModule.forRoot({}, {}),
-        NgbModule,
-        NgOptimizedImage,
-        TuiRootModule,
-        TuiDialogModule,
-        TuiAlertModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    StoreModule.forRoot({}, {}),
+    NgbModule,
+    NgOptimizedImage,
+    TuiRootModule,
+    TuiDialogModule,
+    TuiAlertModule,
+    MatCardModule
+  ],
   providers: [{provide: TUI_SANITIZER, useClass: NgDompurifySanitizer}],
   bootstrap: [AppComponent]
 })
