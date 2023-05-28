@@ -39,3 +39,27 @@
 .nav-social:hover {
   transform: scale(1.2);
 }
+
+.nav-mobile {
+  min-height: 7rem;
+}
+
+.img-mobile {
+  max-height: 6rem;
+  margin: 0.5rem 0;
+  width: auto;
+}
+
+.dialog-btn-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.dialog-list {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

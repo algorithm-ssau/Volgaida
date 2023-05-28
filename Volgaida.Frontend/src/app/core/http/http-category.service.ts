@@ -9,7 +9,7 @@ import {CategoryDto} from "../dto/CategoryDto";
   providedIn: 'root'
 })
 export class HttpCategoryService {
-  private readonly url = environment.API_URL + 'category/';
+  private readonly url = environment.API_URL + 'categories/';
 
   constructor(private readonly http: HttpClient, @Inject(TuiAlertService) private readonly alerts: TuiAlertService) {
   }
@@ -30,7 +30,14 @@ export class HttpCategoryService {
   }
 
   getNameById(categoryId: number): Observable<string> {
-    return this.http.get<string>(this.url + 'category/' + categoryId + '/name')
+    return this.http.get<string>(this.url + categoryId + '/name')
+      .pipe(
+        catchError(this.errorHandler.bind(this))
+      )
+  }
+
+  getImageById(categoryId: number): Observable<Blob> {
+    return this.http.get(this.url + categoryId + '/image', {responseType: 'blob'})
       .pipe(
         catchError(this.errorHandler.bind(this))
       )

@@ -4,12 +4,12 @@
       <h2 class="fs-1 text-uppercase menu-title">Меню</h2>
     </div>
 
-    <div class="row row-cols-1 row-cols-md-2 g-4 mt-1">
-      <div class="col" *ngFor="let category of categoryService.getAll() | async;">
+    <div *ngIf="categories" class="row row-cols-1 row-cols-md-2 g-4 mt-1">
+      <div class="col" *ngFor="let category of categories">
         <div class="card h-100 app-bg-secondary border-0 position-relative">
           <a (click)="navigateOnCategory(category.id)" class="menu-link">
-            <img [src]="category.image" class="card-img img-fluid menu-image" alt="image card">
-            <h2 class="card-title fs-1 text-white menu-header">{{category.name}}</h2>
+            <img [src]="categoryService.getImageById(category.id) | async" class="card-img img-fluid menu-image" alt="image card">
+            <h2 class="card-title text-center fs-1 text-white menu-header">{{category.name}}</h2>
           </a>
         </div>
       </div>

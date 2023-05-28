@@ -10,3 +10,7 @@ body { margin: 0; font-family: 'Playfair Display', serif; }
 .app-bg-secondary {
   background-color: #FFF4B5;
 }
+
+:root {
+  --tui-elevation-01: #FFF09B;
+}
