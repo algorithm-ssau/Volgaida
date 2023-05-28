@@ -9,7 +9,7 @@ from Dto.CategoryDto import CategoryDto
 from Dto.ProductFullDto import ProductFullDto
 from Dto.ProductShortDto import ProductShortDto
 from Models.database import select_categories, select_category_image_by_id, select_full_product_by_id, \
-    select_short_products, select_product_image_by_id
+    select_short_products, select_product_image_by_id, select_category_by_id
 
 # uvicorn main:app --reload
 
@@ -63,7 +63,7 @@ def get_product_by_id(product_id: int = 1):
 
 
 @app.get('/products', response_model=List[ProductShortDto])
-def get_product_by_id():
+def get_products():
     products = select_short_products()
     products_dto = []
     for product in products:
@@ -81,3 +81,9 @@ def get_product_by_id():
 def get_category_image_by_id(product_id: int = 1):
     product_image = select_product_image_by_id(product_id)
     return Response(content=product_image, media_type="image/jpg")
+
+
+@app.get('/category/{category_id}', response_model=str)
+def get_category_by_id(category_id: int = 1):
+    category = select_category_by_id(category_id)
+    return category
