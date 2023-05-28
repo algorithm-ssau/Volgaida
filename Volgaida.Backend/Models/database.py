@@ -208,6 +208,18 @@ def select_short_products():
     return products
 
 
+def select_short_products_by_category(category_id: int):
+    init_database_server()
+    session = Session(DatabaseServer.Engine)
+    products = session.execute(
+        select(Product.id,
+               Product.name)
+        .join(Category.products)
+        .where(Category.id == category_id)
+    )
+    return products
+
+
 def select_product_image_by_id(product_id: int = 1):
     init_database_server()
     session = Session(DatabaseServer.Engine)
