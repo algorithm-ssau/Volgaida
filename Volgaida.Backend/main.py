@@ -28,7 +28,7 @@ async def validation_exception_handler(exc: ValidationError):
 
 
 @app.get('/categories', response_model=List[CategoryDto])
-def get_categories():
+async def get_categories():
     categories = select_categories()
     categories_dto = []
     for category in categories:
@@ -41,25 +41,19 @@ def get_categories():
 
 
 @app.get('/categories/{category_id}', response_model=str)
-def get_category_by_id(category_id: int = 1):
+async def get_category_by_id(category_id: int = 1):
     category = select_category_by_id(category_id)
     return category
 
 
-@app.get('/categories/image/{id}',
-         responses={
-             200: {
-                 "content": {"image/jpg": {}}
-             }
-         },
-         response_class=Response)
-def get_category_image_by_id(category_id: int = 1):
+@app.get('/categories/image/{category_id}')
+async def get_category_image_by_id(category_id: int):
     category_image = select_category_image_by_id(category_id)
     return Response(content=category_image, media_type="image/jpg")
 
 
 @app.get('/products', response_model=List[ProductShortDto])
-def get_products():
+async def get_products():
     products = select_short_products()
     products_dto = []
     for product in products:
@@ -68,7 +62,7 @@ def get_products():
 
 
 @app.get('/products/category/{category_id}', response_model=List[ProductShortDto])
-def get_products_by_category(category_id: int):
+async def get_products_by_category(category_id: int):
     products = select_short_products_by_category(category_id)
     products_dto = []
     for product in products:
@@ -77,7 +71,7 @@ def get_products_by_category(category_id: int):
 
 
 @app.get('/products/{product_id}', response_model=ProductFullDto)
-def get_product_by_id(product_id: int = 1):
+async def get_product_by_id(product_id: int):
     products = select_full_product_by_id(product_id)
     product_full = []
     for product in products:
@@ -86,13 +80,7 @@ def get_product_by_id(product_id: int = 1):
     return product_full[0]
 
 
-@app.get('/products/image/{id}',
-         responses={
-             200: {
-                 "content": {"image/jpg": {}}
-             }
-         },
-         response_class=Response)
-def get_product_image_by_id(product_id: int = 1):
+@app.get('/products/image/{product_id}')
+async def get_product_image_by_id(product_id: int):
     product_image = select_product_image_by_id(product_id)
     return Response(content=product_image, media_type="image/jpg")
