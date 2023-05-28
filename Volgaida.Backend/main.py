@@ -40,13 +40,13 @@ def get_categories():
     return categories_dto
 
 
-@app.get('/category/{category_id}', response_model=str)
+@app.get('/categories/{category_id}', response_model=str)
 def get_category_by_id(category_id: int = 1):
     category = select_category_by_id(category_id)
     return category
 
 
-@app.get('/categories/{id}/image',
+@app.get('/categories/image/{id}',
          responses={
              200: {
                  "content": {"image/jpg": {}}
@@ -86,7 +86,7 @@ def get_product_by_id(product_id: int = 1):
     return product_full[0]
 
 
-@app.get('/products/{id}/image',
+@app.get('/products/image/{id}',
          responses={
              200: {
                  "content": {"image/jpg": {}}
