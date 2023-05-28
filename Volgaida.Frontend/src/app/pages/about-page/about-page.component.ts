@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 
 import {ImageSize} from "../../core/ImageSize";
-import {HttpCategoryMockService} from "../../core/mocks/http-category-mock.service";
 
 @Component({
   selector: 'app-about-page',

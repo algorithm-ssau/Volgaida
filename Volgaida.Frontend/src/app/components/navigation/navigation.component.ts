@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit, TemplateRef} from '@angular/core';
+import {TuiDialogContext, TuiDialogService} from "@taiga-ui/core";
 
 @Component({
   selector: 'app-navigation',
@@ -6,10 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navigation.component.css']
 })
 export class NavigationComponent implements OnInit {
-
-  constructor() { }
+  constructor(@Inject(TuiDialogService) private readonly dialogs: TuiDialogService) { }
 
   ngOnInit(): void {
   }
 
+  openMobileMenu(content: TemplateRef<TuiDialogContext>) {
+    this.dialogs
+      .open(content, {
+        closeable: false,
+        size: "page"
+      })
+      .subscribe();
+  }
 }
