@@ -1,7 +1,7 @@
 from sqlalchemy import String, Integer, Column, LargeBinary
 from sqlalchemy.orm import relationship
 
-from Models.base import Base
+from base import Base
 
 
 class Category(Base):
