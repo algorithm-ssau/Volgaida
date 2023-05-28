@@ -217,6 +217,15 @@ def select_product_image_by_id(product_id: int = 1):
     return image.scalar()
 
 
+def select_category_by_id(category_id: int = 1):
+    init_database_server()
+    session = Session(DatabaseServer.Engine)
+    category = session.execute(
+        select(Category.name).where(Category.id == category_id)
+    )
+    return category.scalar()
+
+
 def main():
     create_database(
         DatabaseServer.DEFAULT_HOST,
