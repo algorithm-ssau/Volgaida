@@ -80,7 +80,7 @@ async def get_product_by_id(product_id: int):
     return product_full[0]
 
 
-@app.get('/products/{product_id}image/')
+@app.get('/products/{product_id}/image')
 async def get_product_image_by_id(product_id: int):
     product_image = select_product_image_by_id(product_id)
     return Response(content=product_image, media_type="image/jpg")
