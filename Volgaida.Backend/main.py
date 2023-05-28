@@ -49,7 +49,7 @@ def get_category_by_id(category_id: int = 1):
 @app.get('/categories/{id}/image',
          responses={
              200: {
-                 "content": {"image/png": {}}
+                 "content": {"image/jpg": {}}
              }
          },
          response_class=Response)
@@ -89,7 +89,7 @@ def get_product_by_id(product_id: int = 1):
 @app.get('/products/{id}/image',
          responses={
              200: {
-                 "content": {"image/png": {}}
+                 "content": {"image/jpg": {}}
              }
          },
          response_class=Response)
