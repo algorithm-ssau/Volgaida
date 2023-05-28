@@ -3,6 +3,7 @@ from typing import List
 from fastapi import FastAPI, status
 from fastapi.encoders import jsonable_encoder
 from fastapi.responses import JSONResponse, Response
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import ValidationError
 
 from Dto.CategoryDto import CategoryDto
@@ -16,6 +17,21 @@ from Models.database import select_categories, select_category_image_by_id, sele
 app = FastAPI(
     title='Valgoida',
     message='Hello Volgaida'
+)
+
+origins = [
+    "http://localhost.tiangolo.com",
+    "https://localhost.tiangolo.com",
+    "http://localhost",
+    "http://localhost:8080",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 
