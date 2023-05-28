@@ -13,7 +13,7 @@ class DatabaseServer:
     DEFAULT_HOST = "localhost"
     DEFAULT_PORT = 5432
     DEFAULT_USERNAME = "postgres"
-    DEFAULT_PASSWORD = "password"
+    DEFAULT_PASSWORD = "postgres"
     DEFAULT_DATABASE_NAME = "volgaida"
 
     DEFAULT_URL = f"postgresql://{DEFAULT_USERNAME}:{DEFAULT_PASSWORD}@{DEFAULT_HOST}:{DEFAULT_PORT}/{DEFAULT_DATABASE_NAME}"

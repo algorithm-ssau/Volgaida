@@ -16,6 +16,7 @@ import {NgOptimizedImage} from "@angular/common";
 import { FooterComponent } from './components/footer/footer.component';
 import { CategoryPageComponent } from './pages/category-page/category-page.component';
 import {MatCardModule} from "@angular/material/card";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import {MatCardModule} from "@angular/material/card";
     CategoryPageComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

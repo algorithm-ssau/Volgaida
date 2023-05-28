@@ -1,10 +1,8 @@
 export interface ProductFullDto {
+  id: number,
   name: string,
   price: number,
   description: string,
   weight: number,
-  proteins: number,
-  fats: number,
-  carbohydrates: number
-  image: string
+  pfc: string
 }

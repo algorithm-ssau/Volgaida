@@ -3,97 +3,79 @@ import {ProductShortDto} from "../dto/ProductShortDto";
 import {CategoryDto} from "../dto/CategoryDto";
 
 export const ProductFullMock: ProductFullDto = {
+  id: 1,
   name: 'Куриный бутерброд на деревянной доске',
   price: 1500.5,
   description: 'Курица деревенская, белый хлеб, помидоры, листья салата, плавленный сыр, огурцы, соус',
-  weight: 300,
-  proteins: 7,
-  fats: 9,
-  carbohydrates: 17,
-  image: 'assets/images/mocks/mock-product.jpg'
+  pfc: "10/12/5",
+  weight: 100
 }
 
 export const ProductsShortMock: ProductShortDto[] = [
   {
     id: 1,
     name: 'Product_1',
-    image_compressed: 'assets/images/mocks/mock-product.jpg'
   },
   {
     id: 2,
     name: 'Product_2',
-    image_compressed: 'assets/images/mocks/mock-product.jpg'
   },
   {
     id: 3,
     name: 'Product_3',
-    image_compressed: 'assets/images/mocks/mock-product.jpg'
   },
   {
     id: 4,
     name: 'Product_4',
-    image_compressed: 'assets/images/mocks/mock-product.jpg'
   },
   {
     id: 5,
-    name: 'Product_5',
-    image_compressed: 'assets/images/mocks/mock-product.jpg'
+    name: 'Product_5'
   },
   {
     id: 6,
-    name: 'Product_6',
-    image_compressed: 'assets/images/mocks/mock-product.jpg'
+    name: 'Product_6'
   },{
     id: 7,
-    name: 'Product_7',
-    image_compressed: 'assets/images/mocks/mock-product.jpg'
+    name: 'Product_7'
   },
   {
     id: 8,
-    name: 'Product_8',
-    image_compressed: 'assets/images/mocks/mock-product.jpg'
+    name: 'Product_8'
   },
   {
     id: 9,
-    name: 'Product_9',
-    image_compressed: 'assets/images/mocks/mock-product.jpg'
+    name: 'Product_9'
   },
   {
     id: 10,
-    name: 'Product_10',
-    image_compressed: 'assets/images/mocks/mock-product.jpg'
+    name: 'Product_10'
   }
 ]
 
 export const CategoriesMock: CategoryDto[] = [
   {
     id: 1,
-    name: 'Салаты',
-    image: 'assets/images/mocks/mock-product.jpg'
+    name: 'Салаты'
   },
   {
     id: 2,
-    name: 'Горячие блюда',
-    image: 'assets/images/mocks/mock-rectangle.png'
+    name: 'Горячие блюда'
   },
   {
     id: 3,
-    name: 'Напитки',
-    image: 'assets/images/mocks/mock-rectangle.png'
+    name: 'Напитки'
   },
   {
     id: 4,
-    name: 'Барная карта',
-    image: 'assets/images/mocks/mock-rectangle.png'
+    name: 'Барная карта'
   },
   {
     id: 5,
-    name: 'Закуски',
-    image: 'assets/images/mocks/mock-rectangle.png'
+    name: 'Закуски'
   },
   {
     id: 6,
-    name: 'Дессерты',
-    image: 'assets/images/mocks/mock-rectangle.png'
+    name: 'Дессерты'
   }
 ]

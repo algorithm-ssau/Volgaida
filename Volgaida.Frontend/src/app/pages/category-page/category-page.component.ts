@@ -6,6 +6,8 @@ import {ProductShortDto} from "../../core/dto/ProductShortDto";
 import {HttpCategoryMockService} from "../../core/mocks/http-category-mock.service";
 import {TuiDialogContext, TuiDialogService, TuiDialogSize} from "@taiga-ui/core";
 import {ProductFullDto} from "../../core/dto/ProductFullDto";
+import {HttpCategoryService} from "../../core/http/http-category.service";
+import {HttpProductService} from "../../core/http/http-product.service";
 
 @Component({
   selector: 'app-category-page',
@@ -19,8 +21,8 @@ export class CategoryPageComponent implements OnInit {
   selectedProduct: ProductFullDto | undefined;
 
   constructor(
-    private categoryService: HttpCategoryMockService,
-    private productService: HttpProductMockService,
+    private categoryService: HttpCategoryService,
+    public productService: HttpProductService,
     private activatedRoute: ActivatedRoute,
     @Inject(TuiDialogService) private readonly dialogs: TuiDialogService
   ) {

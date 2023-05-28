@@ -10,7 +10,7 @@ import {ProductShortDto} from "../dto/ProductShortDto";
   providedIn: 'root'
 })
 export class HttpProductService {
-  private readonly url = environment.API_URL + 'product/';
+  private readonly url = environment.API_URL + 'products/';
 
   constructor(private readonly http: HttpClient, @Inject(TuiAlertService) private readonly alerts: TuiAlertService) {
   }
@@ -32,6 +32,13 @@ export class HttpProductService {
 
   getByCategories(categoryId: number): Observable<ProductShortDto[]> {
     return this.http.get<ProductShortDto[]>(this.url + 'category/' + categoryId)
+      .pipe(
+        catchError(this.errorHandler.bind(this))
+      )
+  }
+
+  getImageById(productId: number): Observable<Blob> {
+    return this.http.get(this.url + productId + '/image', {responseType: 'blob'})
       .pipe(
         catchError(this.errorHandler.bind(this))
       )
