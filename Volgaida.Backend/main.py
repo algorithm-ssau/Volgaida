@@ -46,7 +46,7 @@ async def get_category_by_id(category_id: int = 1):
     return category
 
 
-@app.get('/categories/image/{category_id}')
+@app.get('/categories/{category_id}/image')
 async def get_category_image_by_id(category_id: int):
     category_image = select_category_image_by_id(category_id)
     return Response(content=category_image, media_type="image/jpg")
@@ -80,7 +80,7 @@ async def get_product_by_id(product_id: int):
     return product_full[0]
 
 
-@app.get('/products/image/{product_id}')
+@app.get('/products/{product_id}image/')
 async def get_product_image_by_id(product_id: int):
     product_image = select_product_image_by_id(product_id)
     return Response(content=product_image, media_type="image/jpg")
