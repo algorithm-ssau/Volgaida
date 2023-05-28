@@ -52,7 +52,7 @@ def fill_database(host, port, user, password, database_name):
         cursor.execute(f"INSERT INTO categories (id, name, image) VALUES(%s,%s,%s)",
                        (i, categories_names[i], Binary(binary_image)))
 
-    hot_dish_photos = ["Паста Карбонара", "Судак на гриле", "Мясо с тушеным картофелем", "Пицца Четыре сыра",
+    hot_dish_photo = ["Паста Карбонара", "Судак на гриле", "Мясо с тушеным картофелем", "Пицца Четыре сыра",
                        "Пицца с ветчиной и грибами", "Пицца с куриной грудкой"]
     hot_dish_comp = ["Спагетти, бекон, сливки, сыр пармезан, яйца, зелень", "Судак, лимон, зелень",
                      "Говядина,томаты, морковь, лук репчатый", "пармезан, чеддер, дор блю, гауда",
@@ -61,7 +61,14 @@ def fill_database(host, port, user, password, database_name):
     hot_dish_weight = [270, 350, 250, 350, 330, 380]
     hot_dish_price = [355, 389, 359, 369, 349, 359]
     hot_dish_pfc = ["13/13/31", "22/1/0", "20/3/25", "46/62/97", "41/35/116", "47/28/120"]
-    dessert_photos = ["Меренга с малиной", "Пломбир с клубничным сиропом", "Чизкейк", "Тирамису", "Панна котта",
+    for i in range(len(hot_dish_comp)):
+        binary_image = open(get_image_file(hot_dish_photo[i]), 'rb').read()
+        cursor.execute(
+            f"INSERT INTO products (id, name, ingredients, pfc, weight, price, image, category_id) VALUES(%s,%s,%s,%s,%s,%s,%s,%s)",
+            (i + 1, hot_dish_photo[i], hot_dish_comp, hot_dish_pfc, hot_dish_weight, hot_dish_price,
+             Binary(binary_image), 1))
+
+    dessert_photo = ["Меренга с малиной", "Пломбир с клубничным сиропом", "Чизкейк", "Тирамису", "Панна котта",
                       "Морковный торт"]
     dessert_comp = ["яичный белок, сахар, ваниль, малина, сливки", "пломбир, шоколад, клубничный сироп",
                     "сливочный сыр, песочное тесто, сливки, вишневый сироп",
@@ -71,7 +78,14 @@ def fill_database(host, port, user, password, database_name):
     dessert_weight = [150, 50, 110, 100, 100, 120]
     dessert_price = [189, 99, 275, 290, 210, 210]
     dessert_pfc = ["35/12/4", "3/15/20", "5/8/20", "4/ 21/24", "6/19/31", "4/20/35"]
-    snacks_photos = ["Круассаны с лососем и творожным сыром", "Чесночные гренки с соусом Тар-тар",
+    for i in range(len(dessert_comp)):
+        binary_image = open(get_image_file(dessert_photo[i]), 'rb').read()
+        cursor.execute(
+            f"INSERT INTO products (id, name, ingredients, pfc, weight, price, image, category_id) VALUES(%s,%s,%s,%s,%s,%s,%s,%s)",
+            (i + 1, dessert_photo[i], dessert_comp, dessert_pfc, dessert_weight, dessert_price,
+             Binary(binary_image), 1))
+
+    snacks_photo = ["Круассаны с лососем и творожным сыром", "Чесночные гренки с соусом Тар-тар",
                      "Луковые кольца с чесночным соусом", "Тар-тар из лосося", "Сырный зуб",
                      "Куриный бутерброд на деревянной доске", "Картофель фри", "Картофель айдахо"]
     snacks_comp = ["круассан, лосось слабой соли, лист салата, огурец, творожный сыр", "Чесночные гренки, соус Тар-тар",
@@ -82,6 +96,13 @@ def fill_database(host, port, user, password, database_name):
     snacks_weight = [244, 210, 170, 250, 250, 300, 189, 199]
     snacks_price = [325, 185, 149, 330, 349, 359, 189, 199]
     snacks_pfc = ["10/7/20", "12/30/50", "1/2/4", "11/14/18", "30/39/23", "7/9/17", "2/14/25", "2/14/25"]
+    for i in range(len(snacks_comp)):
+        binary_image = open(get_image_file(snacks_photo[i]), 'rb').read()
+        cursor.execute(
+            f"INSERT INTO products (id, name, ingredients, pfc, weight, price, image, category_id) VALUES(%s,%s,%s,%s,%s,%s,%s,%s)",
+            (i + 1, snacks_photo[i], snacks_comp, snacks_pfc, snacks_weight, snacks_price,
+             Binary(binary_image), 1))
+
     salad_photo = ["Цезарь с курицей", "Греческий", "Салат с розовыми помидорами", "Салат с пряной говядиной",
                    "Салат цезарь с креветками", "Салат с сыром сулугуни"]
     salad_comp = ["листья салата, томаты, куриное филе, яйца, сыр пармезан, соус Цезарь, сухарики",
@@ -93,6 +114,13 @@ def fill_database(host, port, user, password, database_name):
     salad_weight = [200, 310, 160, 210, 160, 170]
     salad_price = [369, 310, 265, 235, 239, 199]
     salad_pfc = ["14/4/6", "1/0/3", "3/5/4", "10/7/4", "6/4/3", "8/16/4"]
+    for i in range(len(salad_comp)):
+        binary_image = open(get_image_file(salad_photo[i]), 'rb').read()
+        cursor.execute(
+            f"INSERT INTO products (id, name, ingredients, pfc, weight, price, image, category_id) VALUES(%s,%s,%s,%s,%s,%s,%s,%s)",
+            (i + 1, salad_photo[i], salad_comp, salad_pfc, salad_weight, salad_price,
+             Binary(binary_image), 1))
+
     drink_photo = ["Огуречный лимонад", "Милкшейк", "Шмель", "Бабл гам", "Арбузный слинг", "Апельсиновый Сок"]
     drink_comp = ["Медовый сироп, огурцы свежие, апельсин, лайм, мята, фреш лимона, бон аква, спрайт",
                   "Молоко, мороженое, сироп в ассортименте, взбитые сливки",
@@ -101,6 +129,13 @@ def fill_database(host, port, user, password, database_name):
     drink_weight = [940, 250, 150, 190, 170, 250]
     drink_price = [260, 145, 80, 100, 100, 150]
     drink_pfc = ["0/3/2", "4/3/18", "0/0/10", "0/0/14", "0/0/10", "0/0/10"]
+    for i in range(len(drink_comp)):
+        binary_image = open(get_image_file(drink_photo[i]), 'rb').read()
+        cursor.execute(
+            f"INSERT INTO products (id, name, ingredients, pfc, weight, price, image, category_id) VALUES(%s,%s,%s,%s,%s,%s,%s,%s)",
+            (i + 1, drink_photo[i], drink_comp, salad_pfc, drink_weight, drink_price,
+             Binary(binary_image), 1))
+
     bar_card_photo = ["Мокрый лёд", "Голубая лагуна", "Джонни Сильверхенд", "Пина Колада", "Белый Русский",
                       "Текила Санрайз"]
     bar_card_comp = ["Мартини бьянко,швепс,лайм", "Водка хаски,сироп блю кюрасао,фреш лимона,спрайт,лимон",
@@ -109,7 +144,14 @@ def fill_database(host, port, user, password, database_name):
                      "Cappuccino Liquor,Водка,Сливки,лед", "Текила,апельсиновый сок,сироп гренадин,апельсин"]
     bar_card_weight = [235, 200, 120, 175, 200, 220]
     bar_card_price = [269, 140, 277, 320, 400, 310]
-    ["", "", "", "", "", ""]
+    bar_card_pfc = ["0/0/13", "0/0/10", "0/0/9", "0/2/22", "0/1/4", "0/0/10"]
+    for i in range(len(bar_card_comp)):
+        binary_image = open(get_image_file(bar_card_photo[i]), 'rb').read()
+        cursor.execute(
+            f"INSERT INTO products (id, name, ingredients, pfc, weight, price, image, category_id) VALUES(%s,%s,%s,%s,%s,%s,%s,%s)",
+            (i + 1, bar_card_photo[i], bar_card_comp, bar_card_pfc, bar_card_weight, bar_card_price,
+             Binary(binary_image), 1))
+
     cursor.close()
     connection.close()
 
