@@ -1,17 +1,19 @@
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
-from psycopg2 import connect, extensions, Binary
 from os import getcwd
-from base import Base
-from Product import Product
-from Category import Category
+
+from psycopg2 import connect, extensions, Binary
+from sqlalchemy import create_engine, select
+from sqlalchemy.orm import sessionmaker, Session
+
+from Models.base import Base
+from Models.Product import Product
+from Models.Category import Category
 
 
 class DatabaseServer:
     DEFAULT_HOST = "localhost"
     DEFAULT_PORT = 5432
     DEFAULT_USERNAME = "postgres"
-    DEFAULT_PASSWORD = "SuperSecretPassword"
+    DEFAULT_PASSWORD = "password"
     DEFAULT_DATABASE_NAME = "volgaida"
 
     DEFAULT_URL = f"postgresql://{DEFAULT_USERNAME}:{DEFAULT_PASSWORD}@{DEFAULT_HOST}:{DEFAULT_PORT}/{DEFAULT_DATABASE_NAME}"
@@ -163,6 +165,58 @@ def create_tables():
     Base.metadata.create_all(DatabaseServer.Engine)
 
 
+def select_categories():
+    init_database_server()
+    session = Session(DatabaseServer.Engine)
+    # smtp = select(Category.name, Category.id)
+    # categories = session.scalars(smtp)
+    categories = session.execute(
+        select(Category.id, Category.name)
+    )
+    return categories
+
+
+def select_category_image_by_id(category_id: int = 1):
+    init_database_server()
+    session = Session(DatabaseServer.Engine)
+    image = session.execute(
+        select(Category.image).where(Category.id == category_id)
+    )
+    return image.scalar()
+
+
+def select_full_product_by_id(product_id: int = 1):
+    init_database_server()
+    session = Session(DatabaseServer.Engine)
+    product = session.execute(
+        select(Product.name,
+               Product.ingredients,
+               Product.pfc,
+               Product.weight,
+               Product.price).where(Product.id == product_id)
+    )
+    return product
+
+
+def select_short_products():
+    init_database_server()
+    session = Session(DatabaseServer.Engine)
+    products = session.execute(
+        select(Product.id,
+               Product.name)
+    )
+    return products
+
+
+def select_product_image_by_id(product_id: int = 1):
+    init_database_server()
+    session = Session(DatabaseServer.Engine)
+    image = session.execute(
+        select(Product.image).where(Product.id == product_id)
+    )
+    return image.scalar()
+
+
 def main():
     create_database(
         DatabaseServer.DEFAULT_HOST,
@@ -182,5 +236,3 @@ def main():
         DatabaseServer.DEFAULT_PASSWORD,
         DatabaseServer.DEFAULT_DATABASE_NAME
     )
-
-main()
