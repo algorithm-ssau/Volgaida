@@ -1,4 +1,4 @@
-<div class="container-fluid app-bg-secondary py-4">
+<div class="container-fluid app-bg-secondary py-4 fullscreen">
   <div class="container">
     <div *ngIf="title && products">
       <div class="d-flex justify-content-center">
@@ -9,8 +9,8 @@
         <div class="col" *ngFor="let product of products">
           <div class="card h-100 app-bg-secondary border-0 position-relative">
             <a class="product-link" (click)="onClick(product, productDialog, 'm')">
-              <img [src]="productService.getImageById(product.id) | async" class="card-img img-fluid product-image" alt="image card">
-              <h2 class="card-title fs-1 text-white product-header">{{product.name}}</h2>
+              <img [ngSrc]="productService.getImageUrl(product.id)" class="card-img img-fluid product-image" alt="image card">
+              <h2 class="card-title fs-1 text-center text-white product-header">{{product.name}}</h2>
             </a>
           </div>
         </div>
@@ -21,13 +21,13 @@
 
 <ng-template #productDialog>
   <div *ngIf="selectedProduct" class="main-font">
-    <img [src]="productService.getImageById(selectedProduct.id) | async" class="img-fluid" alt="image">
+    <img [src]="productService.getImageUrl(selectedProduct.id)" class="img-fluid" alt="image">
     <div class="text-center">
-      <h1 class="mt-3">{{selectedProduct.name}}</h1>
+      <h1 class="mt-3 fw-bold">{{selectedProduct.name}}</h1>
       <p class="fs-1 mt-3">{{selectedProduct.price}}₽</p>
-      <p class="fs-2 mt-3">{{selectedProduct.description}}</p>
+      <p class="fs-2 mt-3"><span class="fs-1">Состав:</span> {{selectedProduct.ingredients}}</p>
       <p class="fs-1 mt-3">БЖУ за 100г: {{selectedProduct.pfc}}</p>
-      <p class="fs-1 mt-3">Вес: {{selectedProduct.weight}}г.</p>
+      <p class="fs-1 mt-3">Вес: {{selectedProduct.weight}}г</p>
     </div>
   </div>
 </ng-template>
