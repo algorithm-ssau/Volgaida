@@ -10,8 +10,8 @@ from BL.Category import Category
 
 
 class DatabaseServer:
-    DEFAULT_HOST = "localhost"
-    DEFAULT_PORT = 5432
+    DEFAULT_HOST = "postgres"
+    DEFAULT_PORT = 5435
     DEFAULT_USERNAME = "postgres"
     DEFAULT_PASSWORD = "postgres"
     DEFAULT_DATABASE_NAME = "volgaida"
@@ -23,7 +23,7 @@ class DatabaseServer:
 
 
 def create_database(host, port, user, password, database_name):
-    connection = connect(host=host, port=port, user=user, password=password)
+    connection = connect(dbname="postgres", host=host, port=port, user=user, password=password)
     connection.set_isolation_level(extensions.ISOLATION_LEVEL_AUTOCOMMIT)
 
     cursor = connection.cursor()
@@ -36,7 +36,7 @@ def create_database(host, port, user, password, database_name):
 
 
 def get_image_file(filename):
-    return getcwd() + f"\\BL\\Images\\{filename}.jpg"
+    return getcwd() + f"/BL/Images/{filename}.jpg"
 
 
 def fill_database(host, port, user, password, database_name):
@@ -52,7 +52,7 @@ def fill_database(host, port, user, password, database_name):
         cursor.execute(f"INSERT INTO categories (id, name, image) VALUES(%s,%s,%s)",
                        (i, categories_names[i - 1], Binary(binary_image)))
 
-    hot_dish_photo = ["Паста Карбонара", "Судак на гриле", "Мясо с тушеным картофелем", "Пицца Четыре сыра",
+    hot_dish_photo = ["Паста карбонара", "Судак на гриле", "Мясо с тушеным картофелем", "Пицца Четыре сыра",
                       "Пицца с ветчиной и грибами", "Пицца с куриной грудкой"]
     hot_dish_comp = ["Спагетти, бекон, сливки, сыр пармезан, яйца, зелень", "Судак, лимон, зелень",
                      "Говядина, томаты, морковь, лук репчатый", "Пармезан, чеддер, дор блю, гауда",
@@ -121,7 +121,7 @@ def fill_database(host, port, user, password, database_name):
             (i + 21, salad_photo[i], salad_comp[i], salad_pfc[i], salad_weight[i], salad_price[i],
              Binary(binary_image), 4))
 
-    bar_card_photo = ["Мокрый лёд", "Голубая лагуна", "Джонни Сильверхенд", "Пина Колада", "Белый Русский",
+    bar_card_photo = ["Мокрый Лёд", "Голубая Лагуна", "Джонни Сильверхенд", "Пина Колада", "Белый Русский",
                       "Текила Санрайз"]
     bar_card_comp = ["Мартини бьянко, швепс, лайм", "Водка хаски, сироп блю кюрасао, фреш лимона, спрайт, лимон",
                      "белая текила, апельсиновый биттер, сироп агавы, темное пиво, перец-чили, лед",
@@ -137,7 +137,7 @@ def fill_database(host, port, user, password, database_name):
             (i + 27, bar_card_photo[i], bar_card_comp[i], bar_card_pfc[i], bar_card_weight[i], bar_card_price[i],
              Binary(binary_image), 5))
 
-    drink_photo = ["Огуречный лимонад", "Милкшейк", "Шмель", "Бабл гам", "Арбузный слинг", "Апельсиновый Сок"]
+    drink_photo = ["Огуречный лимонад", "Милкшейк", "Шмель", "Бабл гам", "Арбузный слинг", "Апельсиновый сок"]
     drink_comp = ["Медовый сироп, огурцы свежие, апельсин, лайм, мята, фреш лимона, Бон Аква, спрайт",
                   "Молоко, мороженое, сироп в ассортименте, взбитые сливки",
                   "Карамельный сироп, апельсиновый сок, эспрессо, мята", "Сироп баблгам, фреш лимона, спрайт, лайм",
