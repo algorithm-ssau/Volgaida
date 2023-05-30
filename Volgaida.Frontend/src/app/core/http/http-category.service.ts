@@ -1,5 +1,4 @@
 import {Inject, Injectable} from '@angular/core';
-import {environment} from "../../../environments/environment";
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {TuiAlertService} from "@taiga-ui/core";
 import {catchError, Observable, throwError} from "rxjs";
@@ -9,7 +8,7 @@ import {CategoryDto} from "../dto/CategoryDto";
   providedIn: 'root'
 })
 export class HttpCategoryService {
-  private readonly url = environment.API_URL + 'categories/';
+  private readonly url = '/' + 'categories/';
 
   constructor(private readonly http: HttpClient, @Inject(TuiAlertService) private readonly alerts: TuiAlertService) {
   }
@@ -36,7 +35,7 @@ export class HttpCategoryService {
       )
   }
 
-  getImageUrl(categoryId: number) : string {
+  getImageUrl(categoryId: number): string {
     return this.url + categoryId + '/image'
   }
 }

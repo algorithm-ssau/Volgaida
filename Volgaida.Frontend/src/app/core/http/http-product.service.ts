@@ -2,7 +2,6 @@ import {Inject, Injectable} from '@angular/core';
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {ProductFullDto} from "../dto/ProductFullDto";
 import {catchError, Observable, throwError} from "rxjs";
-import {environment} from "../../../environments/environment";
 import {TuiAlertService} from "@taiga-ui/core";
 import {ProductShortDto} from "../dto/ProductShortDto";
 
@@ -10,7 +9,7 @@ import {ProductShortDto} from "../dto/ProductShortDto";
   providedIn: 'root'
 })
 export class HttpProductService {
-  private readonly url = environment.API_URL + 'products/';
+  private readonly url = '/' + 'products/';
 
   constructor(private readonly http: HttpClient, @Inject(TuiAlertService) private readonly alerts: TuiAlertService) {
   }

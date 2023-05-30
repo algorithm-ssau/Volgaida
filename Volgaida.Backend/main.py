@@ -16,7 +16,7 @@ from BL.database import select_categories, select_category_image_by_id, select_f
 # uvicorn main:app --reload
 
 app = FastAPI(
-    title='Valgoida',
+    title='Volgaida',
     message='Hello Volgaida'
 )
 

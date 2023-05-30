@@ -20,7 +20,7 @@ services:
       - postgres
 
   backend:
-    container_name: volgaida_backend
+    container_name: backend
     build:
       context: ./Volgaida.Backend
     ports:
@@ -39,6 +39,8 @@ services:
       - 4200:4200
     depends_on:
       - backend
+    networks:
+      - postgres
 
 networks:
   postgres:
@@ -46,3 +48,4 @@ networks:
 
 volumes:
   postgres:
+  backend:

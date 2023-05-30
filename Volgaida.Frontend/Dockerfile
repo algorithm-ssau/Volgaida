@@ -4,6 +4,8 @@ WORKDIR /app
 
 RUN npm install -g @angular/cli@14
 
+RUN npm install -g @angular-devkit/build-angular@14.2.11
+
 COPY . .
 
 RUN npm install
