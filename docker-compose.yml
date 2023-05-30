@@ -1,0 +1,45 @@
+version: "3.8"
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: postgres_db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: volgaida
+      PGPORT: 5435
+    ports:
+      - "5435:5435"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - postgres
+
+  backend:
+    container_name: volgaida_backend
+    build:
+      context: ./Volgaida.Backend
+    ports:
+      - 8000:8000
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - postgres
+
+  frontend:
+    container_name: frontend
+    build:
+      context: ./Volgaida.Frontend
+    ports:
+      - 4200:4200
+    depends_on:
+      - backend
+
+networks:
+  postgres:
+    driver: bridge
