@@ -54,7 +54,7 @@ services:
     links:
       - backend:backend
     volumes:
-      - ./server/Nginx:/etc/nginx/conf.d
+      - ./:/etc/nginx/conf.d
     networks:
       postgres:
 
