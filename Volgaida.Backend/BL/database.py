@@ -10,8 +10,8 @@ from BL.Category import Category
 
 
 class DatabaseServer:
-    DEFAULT_HOST = "0.0.0.0"
-    DEFAULT_PORT = 5435
+    DEFAULT_HOST = "localhost"
+    DEFAULT_PORT = 5432
     DEFAULT_USERNAME = "postgres"
     DEFAULT_PASSWORD = "postgres"
     DEFAULT_DATABASE_NAME = "volgaida"
@@ -36,7 +36,7 @@ def create_database(host, port, user, password, database_name):
 
 
 def get_image_file(filename):
-    return getcwd() + f"\\Images\\{filename}.jpg"
+    return getcwd() + f"\\BL\\Images\\{filename}.jpg"
 
 
 def fill_database(host, port, user, password, database_name):
