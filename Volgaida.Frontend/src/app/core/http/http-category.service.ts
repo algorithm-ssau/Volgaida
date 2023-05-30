@@ -2,7 +2,7 @@ import {Inject, Injectable} from '@angular/core';
 import {environment} from "../../../environments/environment";
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {TuiAlertService} from "@taiga-ui/core";
-import {catchError, Observable, of, throwError} from "rxjs";
+import {catchError, Observable, throwError} from "rxjs";
 import {CategoryDto} from "../dto/CategoryDto";
 
 @Injectable({
@@ -36,10 +36,7 @@ export class HttpCategoryService {
       )
   }
 
-  getImageById(categoryId: number): Observable<Blob> {
-    return this.http.get(this.url + categoryId + '/image', {responseType: 'blob'})
-      .pipe(
-        catchError(this.errorHandler.bind(this))
-      )
+  getImageUrl(categoryId: number) : string {
+    return this.url + categoryId + '/image'
   }
 }

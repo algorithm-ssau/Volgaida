@@ -1,4 +1,4 @@
-<div class="container-fluid app-bg-secondary py-4">
+<div class="container-fluid app-bg-secondary py-4 fullscreen">
   <div class="container">
     <div class="d-flex justify-content-center">
       <h2 class="fs-1 text-uppercase menu-title">Меню</h2>
@@ -8,7 +8,7 @@
       <div class="col" *ngFor="let category of categories">
         <div class="card h-100 app-bg-secondary border-0 position-relative">
           <a (click)="navigateOnCategory(category.id)" class="menu-link">
-            <img [src]="categoryService.getImageById(category.id) | async" class="card-img img-fluid menu-image" alt="image card">
+            <img [src]="categoryService.getImageUrl(category.id)" class="card-img img-fluid menu-image" alt="image card">
             <h2 class="card-title text-center fs-1 text-white menu-header">{{category.name}}</h2>
           </a>
         </div>

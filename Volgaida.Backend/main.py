@@ -9,8 +9,9 @@ from pydantic import ValidationError
 from Dto.CategoryDto import CategoryDto
 from Dto.ProductFullDto import ProductFullDto
 from Dto.ProductShortDto import ProductShortDto
-from Models.database import select_categories, select_category_image_by_id, select_full_product_by_id, \
-    select_short_products, select_product_image_by_id, select_category_by_id, select_short_products_by_category
+from BL.database import select_categories, select_category_image_by_id, select_full_product_by_id, \
+    select_short_products, select_product_image_by_id, select_category_name_by_id, select_short_products_by_category, \
+    init_db
 
 # uvicorn main:app --reload
 
@@ -32,6 +33,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+init_db()
 
 @app.exception_handler(ValidationError)
 async def validation_exception_handler(exc: ValidationError):
@@ -54,9 +56,9 @@ async def get_categories():
     return categories_dto
 
 
-@app.get('/categories/{category_id}', response_model=str)
-async def get_category_by_id(category_id: int = 1):
-    category = select_category_by_id(category_id)
+@app.get('/categories/{category_id}/name', response_model=str)
+async def get_category_name_by_id(category_id: int = 1):
+    category = select_category_name_by_id(category_id)
     return category
 
 

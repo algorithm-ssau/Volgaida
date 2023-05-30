@@ -37,10 +37,7 @@ export class HttpProductService {
       )
   }
 
-  getImageById(productId: number): Observable<Blob> {
-    return this.http.get(this.url + productId + '/image', {responseType: 'blob'})
-      .pipe(
-        catchError(this.errorHandler.bind(this))
-      )
+  getImageUrl(productId: number) : string {
+    return this.url + productId + '/image'
   }
 }

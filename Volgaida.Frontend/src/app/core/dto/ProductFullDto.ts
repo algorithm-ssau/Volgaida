@@ -2,7 +2,7 @@ export interface ProductFullDto {
   id: number,
   name: string,
   price: number,
-  description: string,
+  ingredients: string,
   weight: number,
   pfc: string
 }
