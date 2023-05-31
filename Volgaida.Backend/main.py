@@ -43,7 +43,7 @@ async def validation_exception_handler(exc: ValidationError):
     )
 
 
-@app.get('/categories', response_model=List[CategoryDto])
+@app.get('/api/categories', response_model=List[CategoryDto])
 async def get_categories():
     categories = select_categories()
     categories_dto = []
@@ -56,19 +56,19 @@ async def get_categories():
     return categories_dto
 
 
-@app.get('/categories/{category_id}/name', response_model=str)
+@app.get('/api/categories/{category_id}/name', response_model=str)
 async def get_category_name_by_id(category_id: int = 1):
     category = select_category_name_by_id(category_id)
     return category
 
 
-@app.get('/categories/{category_id}/image')
+@app.get('/api/categories/{category_id}/image')
 async def get_category_image_by_id(category_id: int):
     category_image = select_category_image_by_id(category_id)
     return Response(content=category_image, media_type="image/jpg")
 
 
-@app.get('/products', response_model=List[ProductShortDto])
+@app.get('/api/products', response_model=List[ProductShortDto])
 async def get_products():
     products = select_short_products()
     products_dto = []
@@ -77,7 +77,7 @@ async def get_products():
     return products_dto
 
 
-@app.get('/products/category/{category_id}', response_model=List[ProductShortDto])
+@app.get('/api/products/category/{category_id}', response_model=List[ProductShortDto])
 async def get_products_by_category(category_id: int):
     products = select_short_products_by_category(category_id)
     products_dto = []
@@ -86,7 +86,7 @@ async def get_products_by_category(category_id: int):
     return products_dto
 
 
-@app.get('/products/{product_id}', response_model=ProductFullDto)
+@app.get('/api/products/{product_id}', response_model=ProductFullDto)
 async def get_product_by_id(product_id: int):
     products = select_full_product_by_id(product_id)
     product_full = []
@@ -96,7 +96,7 @@ async def get_product_by_id(product_id: int):
     return product_full[0]
 
 
-@app.get('/products/{product_id}/image')
+@app.get('/api/products/{product_id}/image')
 async def get_product_image_by_id(product_id: int):
     product_image = select_product_image_by_id(product_id)
     return Response(content=product_image, media_type="image/jpg")

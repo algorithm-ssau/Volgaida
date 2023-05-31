@@ -1,25 +1,28 @@
-FROM node
+FROM node:latest as builder
 
 WORKDIR /app
 
-RUN npm install -g @angular/cli@14
+COPY ./package.json ./
 
-RUN npm install -g @angular-devkit/build-angular@14.2.11
-
-RUN npm cache clean --force
+RUN npm i
 
 COPY . .
 
-RUN npm install
+#RUN npm install -g @angular/cli@14
 
-RUN npm run build --prod
+#RUN npm install -g @angular-devkit/build-angular@14.2.11
 
+#CMD ["npm", "run", "start"]
 
-FROM nginx:latest AS ngi
+RUN npm run build
 
-COPY --from=build /dist/src/app/dist/my-docker-angular-app /usr/share/nginx/html
-COPY /nginx.conf  /etc/nginx/conf.d/default.conf
+FROM nginx:latest
+EXPOSE 3000
+COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
 
-EXPOSE 80
+RUN rm -rf /usr/share/nginx/html/*
+COPY --from=builder /app/dist/volgaida.frontend /usr/share/nginx/html
 
-CMD ["nginx", "-g", "daemon off;"]
+#EXPOSE 4200:80
+
+#CMD ["nginx", "-g", "daemon off;"]

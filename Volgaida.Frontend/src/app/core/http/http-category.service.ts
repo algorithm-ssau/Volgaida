@@ -8,7 +8,7 @@ import {CategoryDto} from "../dto/CategoryDto";
   providedIn: 'root'
 })
 export class HttpCategoryService {
-  private readonly url = '/' + 'categories/';
+  private readonly url = '/api/' + 'categories/';
 
   constructor(private readonly http: HttpClient, @Inject(TuiAlertService) private readonly alerts: TuiAlertService) {
   }

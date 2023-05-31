@@ -9,7 +9,7 @@ import {ProductShortDto} from "../dto/ProductShortDto";
   providedIn: 'root'
 })
 export class HttpProductService {
-  private readonly url = '/' + 'products/';
+  private readonly url = '/api/' + 'products/';
 
   constructor(private readonly http: HttpClient, @Inject(TuiAlertService) private readonly alerts: TuiAlertService) {
   }

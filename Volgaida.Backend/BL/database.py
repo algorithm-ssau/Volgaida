@@ -10,7 +10,7 @@ from BL.Category import Category
 
 
 class DatabaseServer:
-    DEFAULT_HOST = "postgres"
+    DEFAULT_HOST = "db"
     DEFAULT_PORT = 5435
     DEFAULT_USERNAME = "postgres"
     DEFAULT_PASSWORD = "postgres"

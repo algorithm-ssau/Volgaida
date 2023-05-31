@@ -1,7 +1,7 @@
 version: "3.8"
 
 services:
-  postgres:
+  db:
     image: postgres:15
     container_name: postgres_db
     environment:
@@ -17,52 +17,50 @@ services:
       timeout: 5s
       retries: 5
     networks:
-      postgres:
+      db:
 
-  backend:
-    container_name: backend
+  api:
+    container_name: api
     build:
+      dockerfile: Dockerfile
       context: ./Volgaida.Backend
     ports:
       - 8000:8000
     depends_on:
-      postgres:
+      db:
         condition: service_healthy
     networks:
-      postgres:
+      db:
 
-  frontend:
+  client:
     container_name: frontend
     build:
+      dockerfile: Dockerfile
       context: ./Volgaida.Frontend
+    environment:
+      - CHOCKIDAR_USEPOLLING=true
     ports:
-      - 4200:4200
-    depends_on:
-      - backend
-      - nginx
+      - 3000:3000
     networks:
-      postgres:
+      db:
 
   nginx:
-    image: nginx:latest
-    depends_on:
-      - backend
-    container_name: nginx
-    restart: unless-stopped
+    build:
+      dockerfile: Dockerfile
+      context: ./nginx
+    restart: always
     ports:
       - 80:80
-    links:
-      - backend:backend
-    volumes:
-      - ./:/etc/nginx/conf.d
+    depends_on:
+      - client
+      - api
     networks:
-      postgres:
+      db:
+
 
 networks:
-  postgres:
+  db:
     driver: bridge
 
 volumes:
-  postgres:
-  backend:
-  nginx:
+  db:
